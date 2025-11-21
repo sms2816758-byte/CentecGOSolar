@@ -1,0 +1,130 @@
+/* styles.css
+   A modern, clean style. Uses CSS variables for easy theming.
+*/
+
+:root{
+  --bg:#0f1724;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#ffd54a; /* warm solar accent */
+  --accent-2:#ffb948;
+  --glass: rgba(255,255,255,0.06);
+  --max-width:1200px;
+  --radius:14px;
+  --gap:1.25rem;
+  font-synthesis: none;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,#071025 0%,#061222 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Layout helpers */
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+.section{padding:3rem 1rem}
+.alt{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(7,16,37,0.75), rgba(7,16,37,0.45));backdrop-filter: blur(6px)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.9rem 0}
+.brand{display:flex;align-items:center;gap:0.8rem}
+.logo{width:56px;height:56px;border-radius:8px;object-fit:cover;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.brand h1{font-size:1.05rem;margin:0;font-weight:800}
+.tag{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+/* Nav */
+.nav{display:flex;gap:1rem;align-items:center}
+.nav a{color:inherit;text-decoration:none;padding:.45rem .6rem;border-radius:8px;font-weight:600;opacity:.95}
+.nav a:hover{background:rgba(255,255,255,0.03)}
+.btn-outline{border:1px solid rgba(255,255,255,0.06);padding:.45rem .9rem}
+
+/* Hero / Slideshow */
+.hero{position:relative;overflow:hidden;padding:0;margin:0}
+.slideshow{height:64vh;min-height:420px;display:grid;align-items:center;position:relative}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;display:flex;align-items:center;padding:2rem;transition:opacity .8s cubic-bezier(.2,.9,.2,1),transform .9s;opacity:0;transform:scale(1.02);backdrop-filter:brightness(.9)}
+.slide.active{opacity:1;transform:scale(1)}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(2,6,23,0.6) 0%, rgba(2,6,23,0.2) 45%, rgba(2,6,23,0.6) 100%)}
+.slide-content{position:relative;max-width:760px;color:var(--card);z-index:2}
+.slide-content h2{font-size:2.1rem;margin:0 0 .5rem;line-height:1.03}
+.slide-content p{color:var(--muted);margin-bottom:1rem}
+.cta-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:.8rem 1.15rem;border-radius:10px;font-weight:700;cursor:pointer;color:#072022;text-decoration:none}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:.6rem .9rem;border-radius:10px;color:var(--card);text-decoration:none;display:inline-flex;align-items:center}
+.whatsapp-box {
+  display: inline-block;          /* makes the box respect padding */
+  background-color: #25D366;      /* WhatsApp green background */
+  color: white;                   /* text color stays white */
+  padding: 10px 20px;             /* space inside the box */
+  border-radius: 8px;             /* rounded corners */
+  text-decoration: none;          /* remove underline */
+  font-weight: bold;              /* make text bold */
+}
+.Email-box {
+  display: inline-block;          /* makes the box respect padding */
+  background-color: orangered;      /* WhatsApp green background */
+  color: white;                   /* text color stays white */
+  padding: 10px 20px;             /* space inside the box */
+  border-radius: 8px;             /* rounded corners */
+  text-decoration: none;          /* remove underline */
+  font-weight: bold;              /* make text bold */
+}
+.Contact-box {
+  display: inline-block;          /* makes the box respect padding */
+  background-color: yellowgreen;      /* WhatsApp green background */
+  color: white;                   /* text color stays white */
+  padding: 10px 20px;             /* space inside the box */
+  border-radius: 8px;             /* rounded corners */
+  text-decoration: none;          /* remove underline */
+  font-weight: bold;              /* make text bold */
+}
+/* controls */
+.slide-controls{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;display:flex;align-items:center;gap:.7rem;z-index:40}
+.slide-controls button{background:rgba(255,255,255,0.06);border:0;padding:.45rem .7rem;border-radius:8px;color:var(--card);font-size:1.2rem;cursor:pointer}
+.dots{display:flex;gap:.4rem}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(255,255,255,0.12);cursor:pointer}
+.dots button.active{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+/* Cards and grids */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:1.1rem;border-radius:12px;box-shadow:0 6px 20px rgba(2,8,23,0.6)}
+.card h3{margin:0 0 .45rem}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.project{background:var(--glass);border-radius:12px;overflow:hidden;padding:0}
+.project img{width:100%;height:160px;object-fit:cover;display:block}
+.project h4{margin:.6rem .8rem 0}
+.project p{margin:.3rem .8rem 1rem;color:var(--muted)}
+.project img{width:100%;height:160px;object-fit:cover;display:block}
+.project h4{margin:.6rem .8rem 0}
+.project p{margin:.3rem .8rem 1rem;color:var(--muted)}
+
+/* Contact section */
+.contact-row{display:grid;grid-template-columns:1fr 320px;gap:1.25rem;align-items:start}
+.contact-form{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:1rem;border-radius:12px}
+.contact-form label{display:block;margin-bottom:.8rem;font-weight:600;color:#e6eef8}
+.contact-form input, .contact-form textarea{width:100%;padding:.65rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+.form-actions{display:flex;gap:.6rem;align-items:center;margin-top:.6rem}
+.form-note{color:var(--muted);font-size:.85rem;margin-top:.6rem}
+
+/* Who grid */
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem;color:var(--muted)}
+
+/* Footer */
+.site-footer{padding:1.25rem 0;border-top:1px solid rgba(255,255,255,0.03);margin-top:2rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem}
+.small{opacity:.8}
+
+/* Responsive tweaks */
+@media (max-width:900px){
+  .nav{display:none}
+  .slide-content h2{font-size:1.6rem}
+  .contact-row{grid-template-columns:1fr}
+  .slideshow{height:56vh}
+}
